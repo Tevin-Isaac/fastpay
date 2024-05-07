@@ -1,0 +1,8 @@
+{
+  "base-sepolia": {
+    "USDTetherTest": {
+      "address": "0x3964D4AF928d96E2dFBa68946439950b99BDA610",
+      "startBlock": 9642835
+    }
+  }
+}
