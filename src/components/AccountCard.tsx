@@ -11,7 +11,7 @@ const AccountCard = () => {
   const getUser = async () => {
     const { data } = await axios.get(`/api/user/${address}`);
 
-    return data;
+    return data?.user;
   };
 
   const { isPending: isLoading, data: user } = useQuery({
@@ -43,11 +43,14 @@ query MyQuery {
     const transactions = data.data.transactions;
 
     // Calculate the sum of the `value` field
-    const totalValue = transactions.reduce((sum, transaction) => {
-      // Convert the value from string to number
-      const value = parseFloat(formatEther(transaction?.value));
-      return sum + value;
-    }, 0);
+    const totalValue = transactions.reduce(
+      (sum: number, transaction: number) => {
+        //@ts-ignore Convert the value from string to number
+        const value = parseFloat(formatEther(transaction?.value));
+        return sum + value;
+      },
+      0
+    );
 
     return totalValue;
   };

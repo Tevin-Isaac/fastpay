@@ -24,7 +24,7 @@ model Link {
   type Int @default(0) // 0 one-time, 1 recurring
   isActive Boolean @default(true)
   isEditable Boolean @default(false)
-  uuid String  @db.VarChar(5)
+  uuid String  @db.VarChar(5)  @unique
   owner User @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
