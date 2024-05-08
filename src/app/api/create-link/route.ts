@@ -7,8 +7,6 @@ export const POST = async (request: Request) => {
   const { title, description, website, type, address, amount } =
     await request.json();
 
-  console.log(address);
-
   try {
     //resolve user
     const user = await resolveUser(address);
@@ -26,7 +24,7 @@ export const POST = async (request: Request) => {
         userId: user.id,
       },
     });
-    console.log(link);
+
     return NextResponse.json(link);
   } catch (e) {
     console.log(e);
