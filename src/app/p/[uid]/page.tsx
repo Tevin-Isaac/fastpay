@@ -20,6 +20,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useWindowSize } from "@uidotdev/usehooks";
 import Confetti from "react-confetti";
+import { readContract } from "viem/actions";
 
 const Page = ({ params }: { params: { uid: string } }) => {
   //for submission ux
@@ -46,6 +47,19 @@ const Page = ({ params }: { params: { uid: string } }) => {
     queryKey: ["uid", params],
     queryFn: getPayment,
     enabled: !!params,
+  });
+
+  //simulate contract
+  const { data: bal } = useReadContract({
+    account: address,
+    abi: usdt?.abi,
+    //@ts-ignore
+    address: usdt?.address,
+    functionName: "balanceOf",
+    args: [address],
+    query: {
+      enabled: !!address,
+    },
   });
 
   //simulate contract
@@ -121,7 +135,11 @@ const Page = ({ params }: { params: { uid: string } }) => {
         />
       )}
 
-      <div className="flex flex-col gap-y-4 border px-4 pt-4 pb-8 rounded-3xl shadow-md relative lg:max-w-[400px] lg:mx-auto">
+      <div
+        className={`flex flex-col gap-y-4 border px-4 pt-4 pb-8 rounded-3xl shadow-md relative lg:max-w-[400px] lg:mx-auto ${
+          link?.isActive ? "" : "opacity-50"
+        }`}
+      >
         {isSubmitted && (
           <div className="absolute w-full h-full z-10 left-0 top-0 bg-white/80 rounded-lg flex items-center justify-center">
             <span className="loader"></span>
@@ -131,7 +149,7 @@ const Page = ({ params }: { params: { uid: string } }) => {
           <div className="absolute right-2 top-4 shadow-lg font-medium bg-gray-200 rounded-lg leading-none w-[100px] px-3 py-[6px] text-sm text-center border-2">
             {isPending ? (
               <div className="bg-gray-200 rounded-md w-[20%] h-3 border-2 animate-pulse"></div>
-            ) : link?.type == "single" ? (
+            ) : link?.type == 0 ? (
               "One-Time"
             ) : (
               "Donation"
@@ -165,7 +183,12 @@ const Page = ({ params }: { params: { uid: string } }) => {
               </span>
               <div className="flex items-center gap-x-2">
                 {link?.type == "single" && link?.status == "2" && <Paid />}
-                <span className="font-medium text-xl">${link?.amount}</span>
+                <div>
+                  Bal:{" "}
+                  <span className="font-medium text-xl">
+                    ${formatEther(bal || "0")}
+                  </span>
+                </div>
               </div>
             </div>
           )}
@@ -197,17 +220,16 @@ const Page = ({ params }: { params: { uid: string } }) => {
           {isConnected ? (
             <button
               disabled={!!hash}
-              className="bg-black/90 leading-none px-5 py-4 rounded-md text-white disabled:bg-gray-300"
+              className="bg-black/90 leading-none px-5 lg:px-9 py-4 rounded-md text-white disabled:bg-gray-300"
               onClick={() => handleSubmit()}
             >
-              Make payment
+              Pay {link?.amount} USDT
             </button>
           ) : (
             <ConnectButton />
           )}
         </div>
       </div>
-
       <div className="flex items-center justify-center text-gray-400 mt-2">
         <small>
           this payment link was generated using{" "}
