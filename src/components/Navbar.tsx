@@ -1,5 +1,5 @@
 "use client";
-
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useState } from "react";
 import { Menu, ChevronRight, X } from "../icons";
 import Link from "next/link";
@@ -31,6 +31,8 @@ const Navbar = () => {
           </span>
           <span className="font-bold">FastPay</span>
         </Link>
+
+        <ConnectButton showBalance={false} />
 
         <div className="ml-2 lg:hidden">
           <Menu />

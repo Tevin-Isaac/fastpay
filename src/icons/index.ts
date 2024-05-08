@@ -21,6 +21,7 @@ import Edit from "./Edit";
 import CloseRound from "./CloseRound";
 import LinkIcon from "./LinkIcon";
 import Paid from "./Paid";
+import Links from "./Links";
 
 export {
   X,
@@ -46,4 +47,5 @@ export {
   CloseRound,
   LinkIcon,
   Paid,
+  Links,
 };

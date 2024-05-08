@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ChevronRight } from "../../../icons";
+import { ChevronRight, Links } from "../../../icons";
 import AccountCard from "../../../components/AccountCard";
 import Transactions from "../../../components/Transactions";
 
@@ -15,7 +15,9 @@ const Dashboard = () => {
             href="/links"
             className="flex items-center justify-end gap-x-1 px-2 py-1"
           >
-            <p>My links</p> <ChevronRight />
+            <p>My links</p>
+
+            <ChevronRight />
           </Link>
         </div>
 
