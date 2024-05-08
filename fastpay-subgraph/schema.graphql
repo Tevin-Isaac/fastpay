@@ -26,3 +26,14 @@ type Transfer @entity(immutable: true) {
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
+
+#transaction entity
+type Transaction @entity {
+  id: Bytes! # hash
+  sender: Bytes! # address
+  link: Bytes! # address
+  value: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
