@@ -32,7 +32,9 @@ const Navbar = () => {
           <span className="font-bold">FastPay</span>
         </Link>
 
-        <ConnectButton showBalance={false} />
+        <div className="hidden lg:block">
+          <ConnectButton showBalance={false} />
+        </div>
 
         <div className="ml-2 lg:hidden">
           <Menu />

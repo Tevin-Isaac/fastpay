@@ -40,7 +40,7 @@ const LinkPage = ({ params }: { params: { id: string } }) => {
 
   const copyLink = () => {
     navigator.clipboard
-      .writeText(`https://fastpay.vercel.app/p/${link?.uuid}`)
+      .writeText(`https://fstpay.vercel.app/p/${link?.uuid}`)
       .then(() => {
         toast("Link Copied!");
       });
@@ -143,7 +143,7 @@ const LinkPage = ({ params }: { params: { id: string } }) => {
                     ) : (
                       <div className="text-center flex items-center justify-center gap-x-2">
                         <span className="text-sm">
-                          {`https://fastpay.vercel.app/p/${link?.uuid}`}
+                          {`https://fstpay.vercel.app/p/${link?.uuid}`}
                         </span>
                         <div
                           className="border p-1 rounded-md"
