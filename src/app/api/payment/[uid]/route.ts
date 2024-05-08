@@ -23,13 +23,22 @@ export const PATCH = async (
   request: Request,
   { params }: { params: { uid: string } }
 ) => {
+  const { txn_hash } = await request.json();
+
   try {
+    //
     const link = await prisma.link.update({
       where: {
         uuid: params.uid,
+        type: 0, //for one time links
       },
       data: {
         isActive: false,
+        payments: {
+          create: {
+            txn_hash,
+          },
+        },
       },
     });
 

@@ -28,7 +28,7 @@ const LinkPage = ({ params }: { params: { id: string } }) => {
     const { data } = await axios.get(
       `/api/user/${address}/links/${params?.id}`
     );
-
+    console.log(data);
     return data;
   };
 
@@ -40,13 +40,13 @@ const LinkPage = ({ params }: { params: { id: string } }) => {
 
   const copyLink = () => {
     navigator.clipboard
-      .writeText(`https://fastpay.io/p/${link?.uuid}`)
+      .writeText(`https://fastpay.xyz/p/${link?.uuid}`)
       .then(() => {
         toast("Link Copied!");
       });
   };
 
-  //TODO: Payments fromnGraphQL
+  //TODO: Payments from GraphQL
 
   return (
     <section>
@@ -124,7 +124,7 @@ const LinkPage = ({ params }: { params: { id: string } }) => {
               }  w-1/2 p-2 pb-3 flex justify-center border-b items-center cursor-pointer`}
               onClick={() => setSelected("payment")}
             >
-              <span>Payments</span>
+              <span>{`Payment${link?.type == 1 ? "s" : ""}`}</span>
               {link?.payments?.length > 0 && <Paid />}
             </p>
           </div>
@@ -183,9 +183,8 @@ const LinkPage = ({ params }: { params: { id: string } }) => {
                   link?.payments.map((payment: any) => (
                     <Payment
                       key={payment.id}
-                      txn={payment}
-                      label={link?.status}
-                      color="green"
+                      payment={payment}
+                      amount={link?.amount}
                     />
                   ))
                 ) : (

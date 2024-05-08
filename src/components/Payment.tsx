@@ -1,15 +1,14 @@
 import { Down } from "../icons";
 import Badge from "./Badge";
 import { formatDate } from "../helpers";
+import { LinkPayment } from "@prisma/client";
 
 const Payment = ({
-  txn,
-  label,
-  color,
+  payment,
+  amount,
 }: {
-  txn: any;
-  label: string;
-  color: string;
+  payment: LinkPayment;
+  amount: number;
 }) => {
   return (
     <div className="flex flex-col gap-y-4">
@@ -18,14 +17,14 @@ const Payment = ({
           <Down />
           <div className="flex flex-col items-start justify-start gap-x-2">
             <small className=" text-gray-900">
-              {formatDate(txn?.updated_at)}
+              {formatDate(payment?.createdAt?.toString())}
             </small>
           </div>
         </div>
         <div className="flex flex-col items-center gap-x-2">
           <div className="flex items-center gap-x-2">
-            <Badge label={label} />
-            <p>${txn?.amount}</p>
+            <Badge label="paid" />
+            <p>${amount}</p>
           </div>
         </div>
       </div>

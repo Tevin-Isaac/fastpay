@@ -15,6 +15,9 @@ export const GET = async (
         uuid: params.id,
         userId: user.id,
       },
+      include: {
+        payments: true,
+      },
     });
     return NextResponse.json(link);
   } catch (e) {

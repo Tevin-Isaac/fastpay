@@ -28,6 +28,17 @@ model Link {
   owner User @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  payments LinkPayment[]
+  @@map("links")
+}
+
+model LinkPayment {
+  id String @id @default(cuid())
+  txn_hash String? @unique @default("")
+  linkId String
+  link Link  @relation(fields: [linkId], references: [id])
+  createdAt DateTime  @default(now())
+  @@map("link_payments")
 }
 
 model User {
@@ -36,4 +47,5 @@ model User {
   username    String?
   email    String?
   links   Link[]
+  @@map("users")
 }

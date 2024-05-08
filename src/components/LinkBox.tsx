@@ -12,7 +12,14 @@ const LinkBox = ({ link }: { link: LinkType }) => {
           <div className="flex gap-x-2 justify-start items-center">
             <div className="flex flex-col items-start justify-start gap-x-2"></div>
           </div>
-          <Badge label={link?.isActive ? "Awaiting payment" : "closed"} />
+          {link?.type == 0 ? (
+            <Badge
+              label={link?.isActive ? "Awaiting payment" : "paid"}
+              c={!link?.isActive ? "bg-green-200" : ""}
+            />
+          ) : (
+            <Badge label={link?.isActive ? "Active" : "closed"} />
+          )}
         </div>
         <div className="flex flex-col gap-x-2">
           <div className="flex items-center justify-end gap-x-2">
