@@ -6,7 +6,7 @@ FastPay is Dapp that enable users create one-time or recurring payment links wit
 
 ## Problem
 
-Web3 users must share long wallet addresses to receive payments, posing typo risks and unintentional errors.
+Web3 users must share long wallet addresses to receive payments, posing typo risks and unintentional errors risking revene loss.
 
 ## Solution
 
