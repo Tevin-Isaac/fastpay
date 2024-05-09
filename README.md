@@ -16,7 +16,7 @@ FastPay lets users generate payment links using their wallet addresses, and rece
 
 - [Live Dapp](https://fstpay.vercel.app)
 
-- [Video Demo](https://youtu.be/)
+- [Video Demo](https://youtu.be/aPA05ZTg8Ik)
 
 - [Screenshots](https://drive.google.com/drive/folders/15uX-fBDJaNlSHdzhMhUeBEAKUCPq2LJT?usp=sharing)
 
