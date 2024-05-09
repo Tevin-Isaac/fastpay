@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![cover_image](https://fstpay.vercel.app/img/cover.jpg)
 
-## Getting Started
+## FastPay Overview
 
-First, run the development server:
+FastPay is Dapp that enable users create one-time or recurring payment links without sharing long wallet addresses. Payments go directly to their wallet address.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Problem
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Web3 users must share long wallet addresses to receive payments, posing typo risks and unintentional errors.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Solution
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+FastPay lets users generate payment links using their wallet addresses, and receive USDT payments directly to their wallet. It's great for small businesses, donations, and community contributions. Its design makes blockchain interaction simple for users.
 
-## Learn More
+## Demo & Transaction
 
-To learn more about Next.js, take a look at the following resources:
+- [Live Dapp](https://fstpay.vercel.app)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Video Demo](https://youtu.be/)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- [Screenshots](https://drive.google.com/drive/folders/15uX-fBDJaNlSHdzhMhUeBEAKUCPq2LJT?usp=sharing)
 
-## Deploy on Vercel
+- [Subgraph Query URL ](https://api.studio.thegraph.com/query/74190/fastpay/v1)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [Payment Transaction on Demo Video (Base Sepolia)](https://base-sepolia.blockscout.com/tx/0x2f728dd8b6fcce32e03b3af74519ec0293bd0a75fa7fa9b4a2299843441078c9)
+- [Another payment link transation (Base Sepolia)](https://base-sepolia.blockscout.com/tx/0xa093f8eae4e149d4f222676ea89bd2a4f0168178b86af21316837b649bccffce)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Tech Stack
+
+- **Backend**: NextJs API routes, The Graph Protocol, Base Sepolia
+
+- **Frontend**: NextJs, Wagmi library for blockchain interaction
+
+- **Approach**: Associate links with wallet addresses, then Watch USDT payments on the links using The Graph Protocol on Base Sepolia.
+
+## Future Plans
+
+- Add support for more stablecoins
+- Add Offramp (NGN, KSH, GHC), so users can convert their received funds into local currency
